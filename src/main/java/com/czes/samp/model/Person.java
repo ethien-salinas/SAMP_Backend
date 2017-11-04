@@ -1,4 +1,4 @@
-package com.czes.samp.models;
+package com.czes.samp.model;
 
 import java.io.Serializable;
 
