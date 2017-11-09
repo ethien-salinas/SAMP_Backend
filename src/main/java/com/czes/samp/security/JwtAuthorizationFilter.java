@@ -2,7 +2,6 @@ package com.czes.samp.security;
 
 import io.jsonwebtoken.Jwts;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,26 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
+public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
-	@Value("${application.jwt.secret}")
-	private String jwtSecret;
-	@Value("${application.jwt.header-string}")
-	private String jwtHeaderString;
-	@Value("${application.jwt.token-prefix}")
-	private String jwtTokenPrefix;
-
-    public JWTAuthorizationFilter(AuthenticationManager authManager) {
+    public JwtAuthorizationFilter(AuthenticationManager authManager) {
         super(authManager);
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest req,
-                                    HttpServletResponse res,
-                                    FilterChain chain) throws IOException, ServletException {
-        String header = req.getHeader(jwtHeaderString);
+    protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
+		
+		String header = req.getHeader(JwtConstants.HEADER_STRING);
 
-        if (header == null || !header.startsWith(jwtTokenPrefix)) {
+        if (header == null || !header.startsWith(JwtConstants.TOKEN_PREFIX)) {
             chain.doFilter(req, res);
             return;
         }
@@ -46,15 +37,14 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-        String token = request.getHeader(jwtHeaderString);
+        String token = request.getHeader(JwtConstants.HEADER_STRING);
         if (token != null) {
             // parse the token.
             String user = Jwts.parser()
-                    .setSigningKey(jwtSecret.getBytes())
-                    .parseClaimsJws(token.replace(jwtTokenPrefix, ""))
-                    .getBody()
-                    .getSubject();
-
+				.setSigningKey(JwtConstants.SECRET.getBytes())
+				.parseClaimsJws(token.replace(JwtConstants.TOKEN_PREFIX, ""))
+				.getBody()
+				.getSubject();
             if (user != null) {
                 return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
             }
