@@ -1,4 +1,4 @@
-# REST API Backend
+# REST API with JWT
 
 Project to serve as base to implement a REST API with JWT.
 
