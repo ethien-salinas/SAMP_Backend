@@ -37,7 +37,7 @@ public class TaskController {
 
 	@PutMapping("/{id}")
 	public void editTask(@PathVariable long id, @RequestBody Task task) {
-		Task existingTask = taskRepository.findOne(id);
+		Task existingTask = taskRepository.findById(id).get();
 		Assert.notNull(existingTask, "Task not found");
 		existingTask.setDescription(task.getDescription());
 		taskRepository.save(existingTask);
@@ -45,7 +45,7 @@ public class TaskController {
 
 	@DeleteMapping("/{id}")
 	public void deleteTask(@PathVariable long id) {
-		taskRepository.delete(id);
+		taskRepository.deleteById(id);
 	}
 
 }
