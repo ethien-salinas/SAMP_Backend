@@ -1,4 +1,4 @@
-package com.czes.samp.SAMP.Backend;
+package com.czes.samp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
