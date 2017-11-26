@@ -1,4 +1,4 @@
-package com.czes.samp.controller;
+package com.edsd.samp.controller;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.czes.samp.entity.ApplicationUser;
-import com.czes.samp.repository.ApplicationUserRepository;
+import com.edsd.samp.entity.ApplicationUser;
+import com.edsd.samp.repository.ApplicationUserRepository;
 
 @RestController
 @RequestMapping("/user")

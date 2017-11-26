@@ -1,9 +1,9 @@
-package com.czes.samp.controller;
+package com.edsd.samp.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.czes.samp.model.Person;
+import com.edsd.samp.model.Person;
 
 @RestController
 public class TestController {

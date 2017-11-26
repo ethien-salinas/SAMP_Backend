@@ -1,4 +1,4 @@
-package com.czes.samp.controller;
+package com.edsd.samp.controller;
 
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.czes.samp.entity.Task;
-import com.czes.samp.repository.TaskRepository;
+import com.edsd.samp.entity.Task;
+import com.edsd.samp.repository.TaskRepository;
 
 import java.util.List;
 
