@@ -1,4 +1,4 @@
-package com.czes.samp.entity;
+package com.edsd.samp.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
