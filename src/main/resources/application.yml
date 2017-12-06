@@ -4,5 +4,5 @@ logging:
     console: "%d %-5level %logger : %msg%n"
     file: "%d %-5level [%thread] %logger : %msg%n"
   level:
-    org.springframework.web: DEBUG
-    org.hibernate: DEBUG
+    org.springframework.web: WARN
+    org.hibernate: WARN
